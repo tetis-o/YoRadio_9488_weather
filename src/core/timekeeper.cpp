@@ -522,8 +522,8 @@ dsp.setFont();
    dsp.setFont(&BahnschriftSemiCondensed16);
     dsp.setTextColor(0xE68B);
     dsp.setTextSize(1);
-    dsp.fillRect(ST_LEFT, ST_TOP+47, 58 , 20,  0x0000); // очистка области номера канала
-        dsp.setCursor(ST_LEFT, ST_TOP+62);
+    dsp.fillRect(ST_LEFT, ST_TOP, 58 , 67,  0x0000); // очистка области номера канала
+        dsp.setCursor(ST_LEFT+4, ST_TOP+62);
     char chbuf[12];
     if (config.getMode() == PM_SDCARD) {
       snprintf(chbuf, sizeof(chbuf), "Tr.%d ", config.lastStation());
@@ -531,10 +531,10 @@ dsp.setFont();
       dsp.drawRGBBitmap(ST_LEFT, ST_TOP, sdcard2, 51, 40); // sdcard icon for SD playback
     } else {
 
-      snprintf(chbuf, sizeof(chbuf), "Ch.%d ", config.lastStation());
+      snprintf(chbuf, sizeof(chbuf), " # %d ", config.lastStation());
       dsp.print(chbuf);
-      dsp.fillRect(ST_LEFT, ST_TOP, 51 , 40,  0x0000);
-      dsp.drawRGBBitmap(ST_LEFT, ST_TOP, station5, 45, 40); // station icon for web streams
+      //dsp.fillRect(ST_LEFT, ST_TOP, 51 , 40,  0x0000);
+      dsp.drawRGBBitmap(ST_LEFT, ST_TOP, station5, 56, 40); // station icon for web streams
     }
   dsp.setFont();
  }

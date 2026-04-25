@@ -5346,8 +5346,8 @@ void Audio::setTone(int8_t gainLowPass, int8_t gainBandPass, int8_t gainHighPass
 //    m_gain2 = gainHighPass;
 
     // gain, attenuation (set in digital filters)
-    int db = max(m_gain0, max(m_gain1, m_gain2));
-    m_corr = pow10f((float)db / 24);
+    int db = max(m_gain0, max(m_gain1, m_gain2))+6;
+    m_corr = pow10f((float)db / 20);
 
     IIR_calculateCoefficients(m_gain0, m_gain1, m_gain2);
 /*
