@@ -5410,8 +5410,17 @@ void Audio::computeLimit() {    	// is calculated when the volume or balance cha
 //    if(m_balance < 0) r = (abs(m_balance) * 16);
 //    else if(m_balance > 0)  l = m_balance * 16;
 
-    m_limit_left = m_vol * l / 254;
-    m_limit_right = m_vol * r / 254;
+    // Logarithmic volume curve: output = 255 * (vol/255)^gamma
+    // gamma > 1: small values produce much smaller output
+    // This matches human ear perception
+    constexpr float GAMMA = 2.0f;  // Higher = more reduction at low vol
+    float volOut = 0;
+    if (m_vol > 0) {
+        float inputNorm = (float)m_vol / 254.0f;
+        volOut = powf(inputNorm, GAMMA) * 254.0f;
+    }
+    m_limit_left = volOut * l / 254;
+    m_limit_right = volOut * r / 254;
 
 //            v = (double)pow(m_vol, 2) / pow(254, 2); 	// square (default)
 //            v = (double)m_vol / 254; 				// linnear

@@ -30,10 +30,10 @@ https://trip5.github.io/yoradio-docs/docs/myoptions-generator.html?b=ESP32-S3-De
 /* **************************************** */
 
 /* TFT */
-#define TFT_CS          9    /* (FSPI CS0)        can be CS pin ( ) */
+#define TFT_CS          41    /* (FSPI CS0)        can be CS pin ( ) */
 #define TFT_RST         -1    /* SPI RST pin. (-1 if connect to EN) */
-#define TFT_DC           10    /* (FSPI HD)         can be DC, RS */
-//#define BRIGHTNESS_PIN  14    /* (FSPI WP)    can be BLK, BL - Pin for brightness (output 0 - 3v3) */
+#define TFT_DC           40   /* (FSPI HD)         can be DC, RS */
+#define BRIGHTNESS_PIN  42    /* (FSPI WP)    can be BLK, BL - Pin for brightness (output 0 - 3v3) */
 //#define DEF_SPI_FREQ        80000000UL    /* Частота SPI для дисплея (80 МГц) */
 
 					/* Connect TFT_MOSI  to pin  11     (FSPI D)      can be SDA, DIN, SDI */
@@ -58,9 +58,9 @@ https://trip5.github.io/yoradio-docs/docs/myoptions-generator.html?b=ESP32-S3-De
 /* **************************************** */
 
 /*  BUTTONS  */
-//#define BTN_LEFT    4    /*  VolDown, Prev */
-//#define BTN_CENTER  6    /*  Play, Stop, Show playlist */
-//#define BTN_RIGHT   5    /*  VolUp, Next */
+#define BTN_LEFT    4    /*  VolDown, Prev */
+#define BTN_CENTER  6    /*  Play, Stop, Show playlist */
+#define BTN_RIGHT   5    /*  VolUp, Next */
 //#define BTN_UP      255   /*  Prev, Move Up */
 //#define BTN_DOWN    255   /*  Next, Move Down */
 //#define BTN_INTERNALPULLUP    false    /*  Enable the weak pull up resistors. По умолчанию "true" */
@@ -73,18 +73,18 @@ https://trip5.github.io/yoradio-docs/docs/myoptions-generator.html?b=ESP32-S3-De
 //#define ENC_BTNL              4       /*  Левое вращение энкодера (S1, DT)*/
 //#define ENC_BTNR              5       /*  Правое вращение энкодера (S2, CLK) */
 //#define ENC_BTNB              6       /*  Кнопка энкодера (Key, SW)*/
-#define ENC2_BTNL             4       /*  Левое вращение энкодера-2 (S1, DT)*/
-#define ENC2_BTNR             5       /*  Правое вращение энкодера-2 (S2, CLK) */
-#define ENC2_BTNB             6      /*  Кнопка энкодера-2 (Key, SW)*/
+//#define ENC2_BTNL             4       /*  Левое вращение энкодера-2 (S1, DT)*/
+//#define ENC2_BTNR             5       /*  Правое вращение энкодера-2 (S2, CLK) */
+//#define ENC2_BTNB             6      /*  Кнопка энкодера-2 (Key, SW)*/
 //#define ENC_INTERNALPULLUP    false    /*  Enable the weak pull up resistors. По умолчанию "true"  */
 //#define ENC2_INTERNALPULLUP   false    /*  Enable the weak pull up resistors. По умолчанию "true"  */
 
 /*  SDCARD  */
-#define SDC_CS          42      /* SDCARD CS pin */
+#define SDC_CS          21      /* SDCARD CS pin */
 					// Connect SDC_MOSI to  40  /* On board can be D1 pin */
 					// Connect SDC_SCK to   41   /* On board can be CLK pin */
 					// Connect SDC_MISO to  42  /* On board can be D0 pin */
-#define SD_SPIPINS  40, 39, 41    /* SCK, MISO, MOSI */
+#define SD_SPIPINS  10, 9, 14    /* SCK, MISO, MOSI */
 /* **************************************** */
 
 /*  Other settings.  */
