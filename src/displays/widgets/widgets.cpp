@@ -13,7 +13,7 @@
 //#include "../fonts/CaviarDreams37.h"// шрифт секунд
 //#include "../fonts/BauhausMedium38.h"// шрифт секунд
 //#include "../fonts/Fnirsi40.h"// шрифт секунд
-#include "../fonts/AvignonProMedium26.h"// шрифт даты
+#include "../fonts/AvignonProDemi26.h"// шрифт даты
 #include "../fonts/BahnschriftSemiCondensed13.h"
 #include "../fonts/BahnschriftSemiCondensed16.h"
 
@@ -778,10 +778,11 @@ void ClockWidget::_printClock(bool force){
     dsp.setFont();
 
 
-    dsp.setFont(&AvignonProMedium26);
-    dsp.setCursor(ICON_WEATHER_LEFT + 35, ICON_WEATHER_TOP + 43);
+    dsp.setFont(&AvignonProDemi26);
+    //dsp.setCursor(ICON_WEATHER_LEFT + 35, ICON_WEATHER_TOP + 43);
     dsp.setTextSize(1);       
     snprintf(datebuf, sizeof(datebuf), "%2d", network.timeinfo.tm_mday);
+    dsp.setCursor(ICON_WEATHER_LEFT+52-strlen(datebuf)*9, ICON_WEATHER_TOP+43);
     dsp.print(datebuf);//День месяца
 
     dsp.setFont();
