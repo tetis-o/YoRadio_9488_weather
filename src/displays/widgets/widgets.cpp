@@ -750,9 +750,13 @@ void ClockWidget::_printClock(bool force){
       if(!config.isScreensaver) {                            
         timekeeper.PrintIcon();                   
         
-       //dsp.fillRect(ICON_WEATHER_LEFT, ICON_WEATHER_TOP-25, 110,89, 0x0000); 
-       dsp.drawRGBBitmap(ICON_WEATHER_LEFT+15, ICON_WEATHER_TOP-18, calend, 76, 82);//календарь 
-       //dsp.drawRGBBitmap(ICON_WEATHER_LEFT+30, ICON_WEATHER_TOP+26, pisces, 48,40 );//знак зодиака
+       //dsp.fillRect(ICON_CALENDAR_LEFT, ICON_WEATHER_TOP-25, 110,89, 0x0000); 
+       //dsp.drawRGBBitmap(ICON_CALENDAR_LEFT+15, ICON_WEATHER_TOP-18, calend, 76, 82);//календарь 
+       dsp.fillRoundRect(ICON_CALENDAR_LEFT, ICON_WEATHER_TOP, 76, 30, 8, 0x52A4); //чистим место под календарь
+       dsp.fillRoundRect(ICON_CALENDAR_LEFT, ICON_WEATHER_TOP+42, 76, 30, 8, 0xDEF5);
+       dsp.fillRect(ICON_CALENDAR_LEFT, ICON_WEATHER_TOP+23, 76, 30, 0xDEFB); //чистим место под день недели
+       dsp.drawRoundRect(ICON_CALENDAR_LEFT, ICON_WEATHER_TOP, 76, 72, 8, 0x94B2); //рамка календаря
+        dsp.drawRoundRect(ICON_CALENDAR_LEFT+1, ICON_WEATHER_TOP+1, 74, 70, 7, 0x94B2); 
        char datebuf[16];    
 
       
@@ -762,7 +766,7 @@ void ClockWidget::_printClock(bool force){
     // snprintf(datebuf, sizeof(datebuf), "%s", utf8Rus(LANG::mnths[network.timeinfo.tm_mon], true));
     const char* monthStr = utf8Rus(LANG::mnths[network.timeinfo.tm_mon], true);
     uint16_t monthWidth = strlen(monthStr) * 4.4; //рассчет примерной ширины
-    dsp.setCursor(ICON_WEATHER_LEFT + 50 - monthWidth, ICON_WEATHER_TOP +11);  
+    dsp.setCursor(ICON_CALENDAR_LEFT + 35 - monthWidth, ICON_WEATHER_TOP +17);  
     dsp.print(monthStr);//месяц
    
 
@@ -773,16 +777,16 @@ void ClockWidget::_printClock(bool force){
     const char* dowStr = utf8Rus(LANG::dow[network.timeinfo.tm_wday], false);
     uint16_t dowWidth = strlen(dowStr) * 3.9; //рассчет примерной ширины
     dsp.setTextColor(dayColor);
-    dsp. setCursor(ICON_WEATHER_LEFT + 52 - dowWidth, ICON_WEATHER_TOP + 57);
+    dsp. setCursor(ICON_CALENDAR_LEFT + 37 - dowWidth, ICON_WEATHER_TOP + 66);
     dsp.print(dowStr);//день недели
     dsp.setFont();
 
 
     dsp.setFont(&AvignonProDemi26);
-    //dsp.setCursor(ICON_WEATHER_LEFT + 35, ICON_WEATHER_TOP + 43);
+    //dsp.setCursor(ICON_CALENDAR_LEFT + 35, ICON_WEATHER_TOP + 43);
     dsp.setTextSize(1);       
     snprintf(datebuf, sizeof(datebuf), "%2d", network.timeinfo.tm_mday);
-    dsp.setCursor(ICON_WEATHER_LEFT+52-strlen(datebuf)*9, ICON_WEATHER_TOP+43);
+    dsp.setCursor(ICON_CALENDAR_LEFT+37-strlen(datebuf)*9, ICON_WEATHER_TOP+49);
     dsp.print(datebuf);//День месяца
 
     dsp.setFont();

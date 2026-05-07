@@ -14,11 +14,11 @@
 #define MAX_WIDTH       DSP_WIDTH-TFT_FRAMEWDT*2
 
 // Coordinates for 60x60 weather icons (can be overridden per-custom config)
-#ifndef ICON_WEATHER_LEFT
-#define ICON_WEATHER_LEFT 360// Координата X для иконки календаря, просто название осталось от прошлой версии
+#ifndef ICON_CALENDAR_LEFT
+#define ICON_CALENDAR_LEFT 375// Координата X для иконки календаря, просто название осталось от прошлой версии
 #endif
 #ifndef ICON_WEATHER_TOP
-#define ICON_WEATHER_TOP 254// Координата Y для иконки календаря, просто название осталось от прошлой версии
+#define ICON_WEATHER_TOP 242// Координата Y для иконки календаря, просто название осталось от прошлой версии
 #endif
 
 #if BITRATE_FULL
